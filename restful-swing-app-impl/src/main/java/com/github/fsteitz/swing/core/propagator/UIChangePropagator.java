@@ -13,26 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.fsteitz.swing.rest.resource;
+package com.github.fsteitz.swing.core.propagator;
 
-import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.Collection;
 
-import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
-import com.github.fsteitz.swing.api.rest.resource.RemoteControlRESTResource;
-import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
+import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
 
 /**
  * @author Florian Steitz (fst)
  */
-public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
+public class UIChangePropagator
 {
+   private static final Collection<UIChangeDelegate> DELEGATES = new ArrayList<>();
+
    /**
-    * @param request
-    * @return
+    * @param delegate
     */
-   public Response updateMessageLabel(RESTUpdateMessageLabelRequest request)
+   public static void addDelegate(UIChangeDelegate delegate)
    {
-      UIChangePropagator.updateMessageLabel(request.getMessage());
-      return Response.ok().build();
+      DELEGATES.add(delegate);
+   }
+
+   /**
+    * @param text
+    */
+   public static void updateMessageLabel(String text)
+   {
+      DELEGATES.forEach(delegate -> delegate.updateMessageLabel(text));
    }
 }

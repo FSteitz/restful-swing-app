@@ -16,12 +16,22 @@
 package com.github.fsteitz.swing.ui.window;
 
 import com.github.fsteitz.swing.core.controller.AbstractMVCController;
+import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
 
 /**
  * @author Florian Steitz
  */
-public class MainWindowCtrl extends AbstractMVCController<MainWindowView>
+public class MainWindowCtrl extends AbstractMVCController<MainWindowView> implements UIChangeDelegate
 {
+   /**
+    * @param text
+    */
+   @Override
+   public void updateMessageLabel(String text)
+   {
+      getView().setMessageLabelText(text);
+   }
+
    /**
     * {@inheritDoc}
     */

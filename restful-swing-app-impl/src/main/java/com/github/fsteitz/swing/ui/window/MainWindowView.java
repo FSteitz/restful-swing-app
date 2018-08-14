@@ -16,7 +16,15 @@
 package com.github.fsteitz.swing.ui.window;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.util.Arrays;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 import com.github.fsteitz.swing.core.view.MVCView;
@@ -26,6 +34,11 @@ import com.github.fsteitz.swing.core.view.MVCView;
  */
 class MainWindowView extends JFrame implements MVCView
 {
+   private static final Font DEFAULT_FONT = new Font("Arial", Font.BOLD, 16);
+   private static final int APP_SIZE = 500;
+
+   private JLabel messageLabel;
+
    /**
     *
     */
@@ -33,9 +46,39 @@ class MainWindowView extends JFrame implements MVCView
    {
       super("RESTful Swing App");
 
+      // Creating child components.
+      messageLabel = new JLabel("Aktuell ist keine Nachricht vorhanden.");
+      messageLabel.setSize(APP_SIZE, 40);
+      messageLabel.setFont(DEFAULT_FONT);
+
+      // Adding child components.
+      addComponentsInsidePanel(messageLabel);
+
+      // Configuring the current window.
       setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       setBackground(new Color(250, 250, 250));
-      setSize(500, 500);
+      setSize(APP_SIZE, APP_SIZE);
       setVisible(true);
+   }
+
+   /**
+    * @param text
+    */
+   void setMessageLabelText(String text)
+   {
+      SwingUtilities.invokeLater(() -> messageLabel.setText(text));
+   }
+
+   /**
+    * @param components
+    */
+   private void addComponentsInsidePanel(JComponent... components)
+   {
+      JPanel panel = new JPanel();
+      panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+      panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+      Arrays.stream(components).forEach(panel::add);
+      add(panel);
    }
 }

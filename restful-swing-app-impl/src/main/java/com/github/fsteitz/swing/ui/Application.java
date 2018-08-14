@@ -15,6 +15,7 @@
  */
 package com.github.fsteitz.swing.ui;
 
+import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
 import com.github.fsteitz.swing.rest.server.RESTServer;
 import com.github.fsteitz.swing.ui.window.MainWindowCtrl;
 
@@ -28,7 +29,7 @@ public class Application
     */
    public static void main(String[] args)
    {
-      new MainWindowCtrl();
+      UIChangePropagator.addDelegate(new MainWindowCtrl());
 
       try
       {

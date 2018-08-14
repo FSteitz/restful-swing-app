@@ -13,26 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.fsteitz.swing.rest.resource;
-
-import javax.ws.rs.core.Response;
-
-import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
-import com.github.fsteitz.swing.api.rest.resource.RemoteControlRESTResource;
-import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
+package com.github.fsteitz.swing.core.delegate;
 
 /**
  * @author Florian Steitz (fst)
  */
-public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
+public interface UIChangeDelegate
 {
    /**
-    * @param request
-    * @return
+    * @param text
     */
-   public Response updateMessageLabel(RESTUpdateMessageLabelRequest request)
-   {
-      UIChangePropagator.updateMessageLabel(request.getMessage());
-      return Response.ok().build();
-   }
+   void updateMessageLabel(String text);
 }
