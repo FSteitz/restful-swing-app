@@ -24,4 +24,9 @@ public interface UIChangeDelegate
     * @param text
     */
    void updateMessageLabel(String text);
+
+   /**
+    *
+    */
+   void openHelloWindow();
 }

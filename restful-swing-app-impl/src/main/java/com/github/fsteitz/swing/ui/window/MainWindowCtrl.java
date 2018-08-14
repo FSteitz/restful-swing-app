@@ -24,12 +24,21 @@ import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
 public class MainWindowCtrl extends AbstractMVCController<MainWindowView> implements UIChangeDelegate
 {
    /**
-    * @param text
+    * {@inheritDoc}
     */
    @Override
    public void updateMessageLabel(String text)
    {
       getView().setMessageLabelText(text);
+   }
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public void openHelloWindow()
+   {
+      getView().clickHelloWindowButton();
    }
 
    /**

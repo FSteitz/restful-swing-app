@@ -73,6 +73,14 @@ class MainWindowView extends JFrame implements MVCView
    }
 
    /**
+    *
+    */
+   void clickHelloWindowButton()
+   {
+      SwingUtilities.invokeLater(openHelloWindowButton::doClick);
+   }
+
+   /**
     * @param components
     */
    private void addComponentsInsidePanel(JComponent... components)

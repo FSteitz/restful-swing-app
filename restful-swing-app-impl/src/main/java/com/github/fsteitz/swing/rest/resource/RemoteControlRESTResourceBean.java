@@ -27,12 +27,22 @@ import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
 public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
 {
    /**
-    * @param request
-    * @return
+    * {@inheritDoc}
     */
+   @Override
    public Response updateMessageLabel(RESTUpdateMessageLabelRequest request)
    {
       UIChangePropagator.updateMessageLabel(request.getMessage());
+      return Response.ok().build();
+   }
+
+   /**
+    * {@inheritDoc}
+    */
+   @Override
+   public Response openHelloWindow()
+   {
+      UIChangePropagator.openHelloWindow();
       return Response.ok().build();
    }
 }

@@ -39,4 +39,11 @@ public interface RemoteControlRESTResource
    @POST
    @Path("/updateMessageLabel")
    Response updateMessageLabel(RESTUpdateMessageLabelRequest request);
+
+   /**
+    * @return
+    */
+   @POST
+   @Path("/openHelloWindow")
+   Response openHelloWindow();
 }

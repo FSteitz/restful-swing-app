@@ -42,4 +42,12 @@ public class UIChangePropagator
    {
       DELEGATES.forEach(delegate -> delegate.updateMessageLabel(text));
    }
+
+   /**
+    *
+    */
+   public static void openHelloWindow()
+   {
+      DELEGATES.forEach(UIChangeDelegate::openHelloWindow);
+   }
 }
