@@ -20,6 +20,7 @@ import java.awt.Font;
 import java.util.Arrays;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -38,6 +39,7 @@ class MainWindowView extends JFrame implements MVCView
    private static final int APP_SIZE = 500;
 
    private JLabel messageLabel;
+   private JButton openHelloWindowButton;
 
    /**
     *
@@ -48,17 +50,18 @@ class MainWindowView extends JFrame implements MVCView
 
       // Creating child components.
       messageLabel = new JLabel("Aktuell ist keine Nachricht vorhanden.");
-      messageLabel.setSize(APP_SIZE, 40);
       messageLabel.setFont(DEFAULT_FONT);
 
+      openHelloWindowButton = new JButton("Fenster \"Hallo\" öffnen");
+      openHelloWindowButton.addActionListener(event -> showHelloWindow());
+      openHelloWindowButton.setFont(DEFAULT_FONT);
+
       // Adding child components.
-      addComponentsInsidePanel(messageLabel);
+      addComponentsInsidePanel(messageLabel, openHelloWindowButton);
 
       // Configuring the current window.
-      setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-      setBackground(new Color(250, 250, 250));
+      applyDefaultWindowSettings(this);
       setSize(APP_SIZE, APP_SIZE);
-      setVisible(true);
    }
 
    /**
@@ -80,5 +83,37 @@ class MainWindowView extends JFrame implements MVCView
 
       Arrays.stream(components).forEach(panel::add);
       add(panel);
+   }
+
+   /**
+    *
+    */
+   private void showHelloWindow()
+   {
+      JFrame window = new JFrame("Hallo!");
+      window.setSize(APP_SIZE, 100);
+      window.add(createHelloLabel());
+      applyDefaultWindowSettings(window);
+   }
+
+   /**
+    * @return
+    */
+   private JLabel createHelloLabel()
+   {
+      JLabel label = new JLabel("Hallo, lieber Anwender!");
+      label.setFont(DEFAULT_FONT);
+
+      return label;
+   }
+
+   /**
+    * @param window
+    */
+   private void applyDefaultWindowSettings(JFrame window)
+   {
+      window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+      window.setBackground(new Color(250, 250, 250));
+      window.setVisible(true);
    }
 }
