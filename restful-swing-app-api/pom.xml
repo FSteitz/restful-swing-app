@@ -9,4 +9,13 @@
     </parent>
 
     <artifactId>restful-swing-app-api</artifactId>
+
+    <dependencies>
+        <!-- JAX-RS -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

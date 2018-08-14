@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.fsteitz.swing.rest.application;
+package com.github.fsteitz.swing.rest.resource;
 
-import java.util.Set;
-import javax.ws.rs.core.Application;
+import javax.ws.rs.core.Response;
 
-import com.github.fsteitz.swing.rest.resource.RemoteControlRESTResourceBean;
-import com.google.common.collect.Sets;
+import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
+import com.github.fsteitz.swing.api.rest.resource.RemoteControlRESTResource;
 
 /**
  * @author Florian Steitz (fst)
  */
-public class RESTApplication extends Application
+public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
 {
    /**
+    * @param request
     * @return
     */
-   @Override
-   public Set<Class<?>> getClasses()
+   public Response updateMessageLabel(RESTUpdateMessageLabelRequest request)
    {
-      return Sets.newHashSet(RemoteControlRESTResourceBean.class);
+      System.out.println(request.getMessage()); // TODO Logging
+      return Response.ok().build();
    }
 }
