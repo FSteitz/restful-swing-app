@@ -15,18 +15,20 @@
  */
 package com.github.fsteitz.swing.rest.server;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import com.github.fsteitz.swing.Application;
+import com.github.fsteitz.swing.api.rest.resource.RESTResource;
 import com.github.fsteitz.swing.rest.application.RESTApplication;
-import com.github.fsteitz.swing.rest.resource.RemoteControlRESTResourceBean;
-import com.google.common.collect.Sets;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.util.component.AbstractLifeCycle;
 import org.eclipse.jetty.util.component.LifeCycle;
 import org.jboss.resteasy.plugins.servlet.ResteasyServletInitializer;
+import org.reflections.Reflections;
 
 /**
  * @author Florian Steitz (fst)
@@ -34,12 +36,9 @@ import org.jboss.resteasy.plugins.servlet.ResteasyServletInitializer;
 public class RESTServer
 {
    private static final String CONTEXT_ROOT = "/";
-   private static final Set<Class<?>> JAX_RS_CLASSES = Sets.newHashSet(
-         RESTApplication.class,
-         RemoteControlRESTResourceBean.class
-   );
 
    private int port;
+   private Set<Class<?>> restClasses;
 
    /**
     * @param port
@@ -47,6 +46,9 @@ public class RESTServer
    public RESTServer(int port)
    {
       this.port = port;
+      this.restClasses = new HashSet<>();
+      this.restClasses.add(RESTApplication.class);
+      this.restClasses.addAll(new Reflections(Application.class.getPackage().getName()).getSubTypesOf(RESTResource.class));
    }
 
    /**
@@ -75,7 +77,7 @@ public class RESTServer
          {
             try
             {
-               new ResteasyServletInitializer().onStartup(JAX_RS_CLASSES, servletContext);
+               new ResteasyServletInitializer().onStartup(restClasses, servletContext);
             }
             catch(ServletException e)
             {

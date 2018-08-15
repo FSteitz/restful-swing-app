@@ -30,7 +30,7 @@ import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
 @Path(RemoteControlRESTResource.PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public interface RemoteControlRESTResource
+public interface RemoteControlRESTResource extends RESTResource
 {
    String PATH = "/remoteControl";
 

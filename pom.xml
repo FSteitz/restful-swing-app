@@ -20,6 +20,7 @@
         <jaxrs.version>2.1</jaxrs.version>
         <guava.version>26.0-jre</guava.version>
         <lombok.version>1.18.2</lombok.version>
+        <reflections.version>0.9.11</reflections.version>
     </properties>
 
     <dependencyManagement>
@@ -74,10 +75,18 @@
                 <version>${guava.version}</version>
             </dependency>
 
+            <!-- Lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- Reflections -->
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
