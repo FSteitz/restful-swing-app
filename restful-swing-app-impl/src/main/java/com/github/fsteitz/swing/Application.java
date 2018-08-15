@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.fsteitz.swing.ui;
+package com.github.fsteitz.swing;
 
 import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
 import com.github.fsteitz.swing.rest.server.RESTServer;
