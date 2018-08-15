@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
+import lombok.NonNull;
 
 /**
  * @author Florian Steitz (fst)
@@ -30,7 +31,7 @@ public class UIChangePropagator
    /**
     * @param delegate
     */
-   public static void addDelegate(UIChangeDelegate delegate)
+   public static void addDelegate(@NonNull UIChangeDelegate delegate)
    {
       DELEGATES.add(delegate);
    }
@@ -38,7 +39,7 @@ public class UIChangePropagator
    /**
     * @param text
     */
-   public static void updateMessageLabel(String text)
+   public static void updateMessageLabel(@NonNull String text)
    {
       DELEGATES.forEach(delegate -> delegate.updateMessageLabel(text));
    }

@@ -15,20 +15,13 @@
  */
 package com.github.fsteitz.swing.api.rest.request;
 
+import lombok.Data;
+
 /**
  * @author Florian Steitz (fst)
  */
+@Data
 public class RESTUpdateMessageLabelRequest
 {
    private String message;
-
-   public String getMessage()
-   {
-      return message;
-   }
-
-   public void setMessage(String message)
-   {
-      this.message = message;
-   }
 }

@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response;
 import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
 import com.github.fsteitz.swing.api.rest.resource.RemoteControlRESTResource;
 import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
+import lombok.NonNull;
 
 /**
  * @author Florian Steitz (fst)
@@ -32,7 +33,7 @@ public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
     * {@inheritDoc}
     */
    @Override
-   public Response updateMessageLabel(RESTUpdateMessageLabelRequest request)
+   public Response updateMessageLabel(@NonNull RESTUpdateMessageLabelRequest request)
    {
       UIChangePropagator.updateMessageLabel(request.getMessage());
       return Response.ok().build();

@@ -17,6 +17,7 @@ package com.github.fsteitz.swing.ui.window;
 
 import com.github.fsteitz.swing.core.controller.AbstractMVCController;
 import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
+import lombok.NonNull;
 
 /**
  * @author Florian Steitz
@@ -27,7 +28,7 @@ public class MainWindowCtrl extends AbstractMVCController<MainWindowView> implem
     * {@inheritDoc}
     */
    @Override
-   public void updateMessageLabel(String text)
+   public void updateMessageLabel(@NonNull String text)
    {
       getView().setMessageLabelText(text);
    }
