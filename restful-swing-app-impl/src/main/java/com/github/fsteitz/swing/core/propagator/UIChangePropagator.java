@@ -31,6 +31,14 @@ public class UIChangePropagator
    private static final Collection<UIChangeDelegate> DELEGATES = new ArrayList<>();
 
    /**
+    * This class must not be instantiated because it serves as a central static registry.
+    */
+   private UIChangePropagator()
+   {
+      // No implementation needed.
+   }
+
+   /**
     * Adds an implementation of {@link UIChangeDelegate} that will be called when the GUI shall be manipulated.
     *
     * @param delegate An implementation of {@link UIChangeDelegate} that will be called when the GUI shall be manipulated

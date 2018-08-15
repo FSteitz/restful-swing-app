@@ -16,6 +16,8 @@
 package com.github.fsteitz.swing.core.controller;
 
 import com.github.fsteitz.swing.core.view.MVCView;
+import lombok.AccessLevel;
+import lombok.Getter;
 
 /**
  * Base class that must be extended by all controllers.
@@ -24,6 +26,7 @@ import com.github.fsteitz.swing.core.view.MVCView;
  */
 public abstract class AbstractMVCController<V extends MVCView> implements MVCController<V>
 {
+   @Getter(AccessLevel.PROTECTED)
    private V view;
 
    /**
@@ -35,17 +38,9 @@ public abstract class AbstractMVCController<V extends MVCView> implements MVCCon
    }
 
    /**
-    * @return
-    */
-   protected V getView()
-   {
-      return view;
-   }
-
-   /**
     * Creates the managed view.
     *
     * @return The managed view
     */
-   abstract protected V createView();
+   protected abstract V createView();
 }
