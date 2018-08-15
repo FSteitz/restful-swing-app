@@ -27,11 +27,13 @@ import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
 /**
  * @author Florian Steitz (fst)
  */
-@Path("/remoteControl")
+@Path(RemoteControlRESTResource.PATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public interface RemoteControlRESTResource
 {
+   String PATH = "/remoteControl";
+
    /**
     * @param request
     * @return

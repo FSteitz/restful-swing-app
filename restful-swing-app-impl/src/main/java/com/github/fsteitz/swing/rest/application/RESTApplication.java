@@ -15,23 +15,14 @@
  */
 package com.github.fsteitz.swing.rest.application;
 
-import java.util.Set;
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-
-import com.github.fsteitz.swing.rest.resource.RemoteControlRESTResourceBean;
-import com.google.common.collect.Sets;
 
 /**
  * @author Florian Steitz (fst)
  */
+@ApplicationPath("/api")
 public class RESTApplication extends Application
 {
-   /**
-    * @return
-    */
-   @Override
-   public Set<Class<?>> getClasses()
-   {
-      return Sets.newHashSet(RemoteControlRESTResourceBean.class);
-   }
+
 }

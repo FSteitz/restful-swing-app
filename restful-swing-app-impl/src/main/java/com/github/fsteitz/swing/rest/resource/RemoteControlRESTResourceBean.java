@@ -15,6 +15,7 @@
  */
 package com.github.fsteitz.swing.rest.resource;
 
+import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
 import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
@@ -24,6 +25,7 @@ import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
 /**
  * @author Florian Steitz (fst)
  */
+@Path(RemoteControlRESTResourceBean.PATH)
 public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
 {
    /**
