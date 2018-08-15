@@ -25,6 +25,8 @@ import javax.ws.rs.core.Response;
 import com.github.fsteitz.swing.api.rest.request.RESTUpdateMessageLabelRequest;
 
 /**
+ * A REST resource that offers endpoints for manipulating the GUI.
+ *
  * @author Florian Steitz (fst)
  */
 @Path(RemoteControlRESTResource.PATH)
@@ -35,15 +37,19 @@ public interface RemoteControlRESTResource extends RESTResource
    String PATH = "/remoteControl";
 
    /**
-    * @param request
-    * @return
+    * Updates the main window's message label.
+    *
+    * @param request Request object that contains the text to show in the  main window's message label.
+    * @return A response that indicates whether the operation was successful.
     */
    @POST
    @Path("/updateMessageLabel")
    Response updateMessageLabel(RESTUpdateMessageLabelRequest request);
 
    /**
-    * @return
+    * Opens the "hello window".
+    *
+    * @return A response that indicates whether the operation was successful.
     */
    @POST
    @Path("/openHelloWindow")

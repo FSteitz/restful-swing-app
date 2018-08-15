@@ -22,6 +22,8 @@ import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
 import lombok.NonNull;
 
 /**
+ * Delegates calls that manipulate the GUI to all registered implementations of {@link UIChangeDelegate} that actually perform the manipulations.
+ *
  * @author Florian Steitz (fst)
  */
 public class UIChangePropagator
@@ -29,7 +31,9 @@ public class UIChangePropagator
    private static final Collection<UIChangeDelegate> DELEGATES = new ArrayList<>();
 
    /**
-    * @param delegate
+    * Adds an implementation of {@link UIChangeDelegate} that will be called when the GUI shall be manipulated.
+    *
+    * @param delegate An implementation of {@link UIChangeDelegate} that will be called when the GUI shall be manipulated
     */
    public static void addDelegate(@NonNull UIChangeDelegate delegate)
    {
@@ -37,7 +41,9 @@ public class UIChangePropagator
    }
 
    /**
-    * @param text
+    * Updates the main window's message label by delegating the call to all available implementations of {@link UIChangeDelegate}.
+    *
+    * @param text The text to show in the  main window's message label.
     */
    public static void updateMessageLabel(@NonNull String text)
    {
@@ -45,7 +51,7 @@ public class UIChangePropagator
    }
 
    /**
-    *
+    * Opens the "hello window" by delegating the call to all available implementations of {@link UIChangeDelegate}.
     */
    public static void openHelloWindow()
    {

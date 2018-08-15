@@ -18,6 +18,8 @@ package com.github.fsteitz.swing.api.rest.request;
 import lombok.Data;
 
 /**
+ * Request for the updating the main window's message label.
+ *
  * @author Florian Steitz (fst)
  */
 @Data

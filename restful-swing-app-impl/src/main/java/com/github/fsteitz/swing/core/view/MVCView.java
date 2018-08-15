@@ -16,9 +16,11 @@
 package com.github.fsteitz.swing.core.view;
 
 /**
+ * Interface that must be implemented by all views.
+ *
  * @author Florian Steitz
  */
 public interface MVCView
 {
-
+   // This interface currently doesn't need to specifiy any methods.
 }

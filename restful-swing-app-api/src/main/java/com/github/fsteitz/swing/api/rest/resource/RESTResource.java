@@ -16,9 +16,11 @@
 package com.github.fsteitz.swing.api.rest.resource;
 
 /**
+ * Interface that must be implemented by all REST resources. Only implementations of this interface are detected during the initial package scan.
+ *
  * @author Florian Steitz (fst)
  */
 public interface RESTResource
 {
-
+   // This interface currently doesn't need to specifiy any methods.
 }

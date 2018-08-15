@@ -18,6 +18,8 @@ package com.github.fsteitz.swing.core.controller;
 import com.github.fsteitz.swing.core.view.MVCView;
 
 /**
+ * Base class that must be extended by all controllers.
+ *
  * @author Florian Steitz
  */
 public abstract class AbstractMVCController<V extends MVCView> implements MVCController<V>
@@ -25,7 +27,7 @@ public abstract class AbstractMVCController<V extends MVCView> implements MVCCon
    private V view;
 
    /**
-    *
+    * Initializes this instance by creating the managed view.
     */
    public AbstractMVCController()
    {
@@ -41,7 +43,9 @@ public abstract class AbstractMVCController<V extends MVCView> implements MVCCon
    }
 
    /**
-    * @return
+    * Creates the managed view.
+    *
+    * @return The managed view
     */
    abstract protected V createView();
 }

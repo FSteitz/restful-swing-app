@@ -18,9 +18,11 @@ package com.github.fsteitz.swing.core.controller;
 import com.github.fsteitz.swing.core.view.MVCView;
 
 /**
+ * Interface that must be implemented by all controllers.
+ *
  * @author Florian Steitz
  */
 public interface MVCController<V extends MVCView>
 {
-
+   // This interface currently doesn't need to specifiy any methods.
 }

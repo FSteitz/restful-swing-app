@@ -19,10 +19,12 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 /**
+ * The entry point of all REST resources. All paths start with the specified application path.
+ *
  * @author Florian Steitz (fst)
  */
 @ApplicationPath("/api")
 public class RESTApplication extends Application
 {
-
+   // Currently no additional implementation needed.
 }

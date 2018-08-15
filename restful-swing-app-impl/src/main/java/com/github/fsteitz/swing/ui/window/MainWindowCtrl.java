@@ -20,6 +20,8 @@ import com.github.fsteitz.swing.core.delegate.UIChangeDelegate;
 import lombok.NonNull;
 
 /**
+ * The controller for {@link MainWindowView}.
+ *
  * @author Florian Steitz
  */
 public class MainWindowCtrl extends AbstractMVCController<MainWindowView> implements UIChangeDelegate

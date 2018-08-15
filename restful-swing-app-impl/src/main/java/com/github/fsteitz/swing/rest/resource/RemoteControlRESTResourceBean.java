@@ -24,9 +24,11 @@ import com.github.fsteitz.swing.core.propagator.UIChangePropagator;
 import lombok.NonNull;
 
 /**
+ * The default implementation of {@link RemoteControlRESTResource}.
+ *
  * @author Florian Steitz (fst)
  */
-@Path(RemoteControlRESTResourceBean.PATH)
+@Path(RemoteControlRESTResourceBean.PATH) // Must be present, otherwise RESTEasy' auto configuration ignores this class.
 public class RemoteControlRESTResourceBean implements RemoteControlRESTResource
 {
    /**

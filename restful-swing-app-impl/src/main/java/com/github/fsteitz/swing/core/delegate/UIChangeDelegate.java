@@ -16,17 +16,21 @@
 package com.github.fsteitz.swing.core.delegate;
 
 /**
+ * Implementations of this interface actually perform the GUI manipulations. Only controllers shall implement this interface.
+ *
  * @author Florian Steitz (fst)
  */
 public interface UIChangeDelegate
 {
    /**
-    * @param text
+    * Updates the main window's message label.
+    *
+    * @param text The text to show in the  main window's message label.
     */
    void updateMessageLabel(String text);
 
    /**
-    *
+    * Opens the "hello window".
     */
    void openHelloWindow();
 }

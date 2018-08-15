@@ -31,6 +31,8 @@ import org.jboss.resteasy.plugins.servlet.ResteasyServletInitializer;
 import org.reflections.Reflections;
 
 /**
+ * Represents a web server, that automatically bootstraps all REST resources available in this application on startup.
+ *
  * @author Florian Steitz (fst)
  */
 public class RESTServer
@@ -41,18 +43,22 @@ public class RESTServer
    private Set<Class<?>> restClasses;
 
    /**
-    * @param port
+    * Initializes this web server with the port it shall run on.
+    *
+    * @param port The port this web server shall run on.
     */
    public RESTServer(int port)
    {
       this.port = port;
       this.restClasses = new HashSet<>();
-      this.restClasses.add(RESTApplication.class);
-      this.restClasses.addAll(new Reflections(Application.class.getPackage().getName()).getSubTypesOf(RESTResource.class));
+      this.restClasses.add(RESTApplication.class); // Add the application class that is required by JAX-RS implementations.
+      this.restClasses.addAll(new Reflections(Application.class.getPackage().getName()).getSubTypesOf(RESTResource.class)); // Find and add all classes of all REST resources available in this application.
    }
 
    /**
-    * @throws Exception
+    * Start and bootstrap the web server.
+    *
+    * @throws Exception If the web server failed to start.
     */
    public void start() throws Exception
    {
@@ -66,7 +72,10 @@ public class RESTServer
    }
 
    /**
+    * Creates an instance of {@link LifeCycle.Listener} that only implements the Method {@link LifeCycle.Listener#lifeCycleStarting(LifeCycle)} for
+    * bootstrapping RESTEasy via {@link ResteasyServletInitializer}.
     *
+    * @param servletContext The context of the primary servlet.
     */
    private LifeCycle.Listener createServletInitializerListener(ServletContext servletContext)
    {
@@ -77,6 +86,8 @@ public class RESTServer
          {
             try
             {
+               // RESTEasy analyzes the received classes and configures the servlet context based on the information it gathered from the annotations
+               // on the classes. All incompatible or irrelevant classes are filtered.
                new ResteasyServletInitializer().onStartup(restClasses, servletContext);
             }
             catch(ServletException e)
